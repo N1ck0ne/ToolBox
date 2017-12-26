@@ -1,0 +1,38 @@
+#!/bin/bash
+#set -e
+tp1=$(tput setaf 1)
+tp0=$(tput sgr 0)
+echo "${tp1}DI CHE COSA DESIDERI USUFRUIRE ?${tp0}"
+echo "1) Informazioni"
+echo "2) Servizi"
+echo "3) Download software"
+echo "4) Utilita'"
+echo "0) Esci"
+read serv_info
+case $serv_info in
+1)
+ ./info;;
+2)
+ ./services;;
+3)
+ ./download_software;;
+4)
+ ./utility;;
+0)
+ exit;;
+*)
+ echo "$(tput setaf 1)IL NUMERO IMMESSO NON CORRISPNDE A NESSUNO DEI VALORI DISPONIBILI$(tput sgr 0)"
+ echo "$(tput setaf 1)DESIDERI RIPROVARE ?$(tput sgr 0)"
+ echo "1) Si"
+ echo "2) No"
+ read try
+   if [ ${try} = "1" ]
+     then
+        sh menu
+   elif [ ${try} = "2" ]
+     then
+        echo "${tp1}GoodBye :)${tp0}"
+   else
+        echo "${tp1}IL NUMERO INSERITO NON CORRISPONDE A NESSUNO DI QUELLI ELENCATI${tp0}"
+  fi;;
+esac
