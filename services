@@ -1,0 +1,51 @@
+#!/bin/bash
+tp1=$(tput setaf 1)
+tp0=$(tput sgr 0)
+echo "${tp1}QUALE SERVIZIO DESIDERI UTILIZZARE ?${tp0}"
+echo "1) Ssh"
+echo "2) Ftp"
+echo "3) Telnet"
+echo "4) Ping"
+echo "5) Traceroute"
+echo "0) Torna al menu principale"
+read num
+case $num in
+1) #SSH
+ echo "${tp1}INSERISCI L'USER${tp0}"
+ read user
+ echo "${tp1}INSERISCI L'HOST${tp0}"
+ read host
+ echo "${tp1}INSERISCI LA PORTA${tp0}"
+ read port
+ ssh ${user}@${host} -p ${port};;
+2) #FTP
+ echo "${tp1}INSERISCI L'HOST${tp0}"
+ read host
+ ftp ${host};;
+3) #TELNET
+ echo "${tp1}INSERISCI L'HOST${tp0}"
+ read host
+ telnet ${host};;
+4)
+ echo "${tp1}INSERISCI L'HOST DA PINGARE${tp0}"
+ read host
+ ping ${host};;
+5)
+ echo "${tp1}INSERISCI l'HOST FINO AL QUALE EFFETTUARE IL TRACEROUTE${tp0}"
+ read host
+ traceroute ${host};;
+0)
+ sh menu;;
+*)
+ echo "${tp1}IL VALORE INSERITO NON CORRISPONDE A NESSUNO DI QUELLI INDICATI${tp0}"
+ echo "${tp1}DESIDERI RIPROVARE ?${tp0}"
+ read answer
+ if [ ${answer} = "si" ]
+  then
+    clear
+    sh services
+ else
+    echo "${tp1}GoodBye :)${tp0}"
+ fi
+esac
+exit 0

@@ -1,0 +1,28 @@
+#!/bin/bash
+tp1=$(tput setaf 1)
+tp0=$(tput sgr 0)
+echo "${tp1}QUALI INFORMAZIONI DESIDERI SAPERE ?${tp0}"
+echo "1) Ip locale"
+echo "2) Ip pubblico"
+echo "3) Mac address"
+echo "4) Ora e data locale"
+echo "5) Host connessi"
+echo "0) Torna al menu principale"
+read num #input dell'utente
+case $num in #comandi eseguiti a seconda della scelta dell'utente
+0)
+ sh menu;;
+1)
+ echo "${tp1}IP LOCALE:${tp0} $(hostname -I)";;
+2)
+ echo "${tp1}IP PUBBLICO:${tp0} $(curl -s ipecho.net/plain)";;
+3)
+ echo "${tp1}MAC ADDRESS:${tp0} $(cat /sys/class/net/eth0/address)";;
+4)
+ echo "${tp1}ORA LOCALE:${tp0} $(date +%H:%M) ${tp1}DATA LOCALE:${tp0} $(date +%d-%m-%y)";;
+5)
+ arp-scan -l;;
+*)
+ echo "${tp1}IL NUMERO INSERITO NON CORRISPONDE A NESSUNO DI QUELLI ELENCATI${tp0}";;
+esac
+exit 0

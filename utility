@@ -1,0 +1,27 @@
+#!/bin/bash
+echo "$(tput setaf 1)DI COSA HAI BISOGNO ?$(tput sgr 0)"
+echo "1) Aggiunta alias"
+echo "0) Torna al menu principale"
+read choice
+case $choice in
+1)
+ ./alias;;
+0)
+ ./menu;;
+*)
+ echo "$(tput setaf 1)IL NUMERO IMMESSO NON CORRISPNDE A NESSUNO DEI VALORI DISPONIBILI$(tput sgr 0)"
+ echo "$(tput setaf 1)DESIDERI RIPROVARE ?$(tput sgr 0)"
+ echo "1) Si"
+ echo "2) No"
+ read try
+   if [ ${try} = "1" ]
+     then
+        sh utility
+   elif [ ${try} = "2" ]
+     then
+        echo "$(tput setaf 1)GoodBye :)$(tput sgr 0)"
+   else
+        echo "$(tput setaf 1)IL NUMERO INSERITO NON CORRISPONDE A NESSUNO DI QUELLI ELENCATI$(tput sgr 0)"
+   fi;;
+esac
+exit 0
