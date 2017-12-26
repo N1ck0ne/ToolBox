@@ -1,0 +1,21 @@
+#!/bin/bash
+p="'"
+tp1=$(tput setaf 1)
+tp0=$(tput sgr 0)
+echo "+---------------+"
+echo "| ${tp1} ALIAS ADDER${tp0}  |"
+echo "+---------------+"
+echo ""
+  echo "${tp1}SCRIVI IL COMANDO DA IMMETTERE NEL TERMINALE${tp0}"
+   read command
+  echo "${tp1}SCRIVI IL RISULTATO CHE COSTITUIRA QUEL COMANDO${tp0}"
+   read result
+  echo alias ${command}=$p${result}$p >> ~/.bashrc
+  echo "${tp1}ECCO QUI IL TUO ALIAS${tp0}"
+  tail -1 ~/.bashrc
+  echo "${tp1}PROVALO!${tp0}"
+  #. ~/.bashrc
+  #exec bash
+  source bash_reload.sh
+#source ~/.bashrc
+exit 0
